@@ -23,3 +23,14 @@ document.querySelectorAll('.faq-item').forEach(function (item) {
     if (!isOpen) { item.classList.add('open'); panel.style.maxHeight = panel.scrollHeight + 'px'; btn.setAttribute('aria-expanded', 'true'); }
   });
 });
+
+// UI/UX round: open the first FAQ question by default.
+document.addEventListener("DOMContentLoaded", function () {
+  var item = document.querySelector(".faq-list .faq-item");
+  if (!item || item.classList.contains("open")) return;
+  var btn = item.querySelector(".faq-q"), ans = item.querySelector(".faq-a");
+  if (!btn || !ans) return;
+  item.classList.add("open");
+  btn.setAttribute("aria-expanded", "true");
+  ans.style.maxHeight = ans.scrollHeight + "px";
+});
