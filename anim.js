@@ -1,6 +1,9 @@
 /* Interlinkz Variant 10 animation layer.
    Desktop only. Content is fully visible without this file.
-   Frame sequence: the centred IZ mark in the hero assembles piece by piece. */
+   Frame sequence: the centred IZ mark in the hero assembles piece by piece.
+   Every ScrollTrigger tween sets immediateRender: false, so nothing is
+   pre-hidden: each element sits fully visible in its final state until
+   its animation moment arrives, then plays and settles. */
 (function () {
   if (!window.matchMedia("(min-width: 1024px)").matches) return;
   if (!window.gsap) return;
@@ -19,19 +22,19 @@
   document.querySelectorAll(".z-ribbon .rib-line").forEach(function (p) {
     var len = p.getTotalLength();
     gsap.fromTo(p, { strokeDasharray: len, strokeDashoffset: len },
-      { strokeDashoffset: 0, duration: 1.5, ease: "power2.out",
+      { strokeDashoffset: 0, duration: 1.5, ease: "power2.out", immediateRender: false,
         scrollTrigger: { trigger: p.closest(".cards-rel") || p, start: "top 78%" } });
   });
 
   /* Gentle rise for marked blocks */
   gsap.utils.toArray("[data-rise]").forEach(function (el) {
-    gsap.from(el, { y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
+    gsap.from(el, { y: 30, opacity: 0, duration: 0.8, ease: "power3.out", immediateRender: false,
       scrollTrigger: { trigger: el, start: "top 88%" } });
   });
 
   /* Joined groups light up in sequence */
   gsap.utils.toArray("[data-joins]").forEach(function (el) {
-    gsap.from(el.children, { opacity: 0, y: 14, duration: 0.5, stagger: 0.12, ease: "power2.out",
+    gsap.from(el.children, { opacity: 0, y: 14, duration: 0.5, stagger: 0.12, ease: "power2.out", immediateRender: false,
       scrollTrigger: { trigger: el, start: "top 86%" } });
   });
 
@@ -39,7 +42,7 @@
   gsap.utils.toArray("[data-nodes]").forEach(function (g) {
     var nodes = g.querySelectorAll(".pnode");
     if (!nodes.length) return;
-    gsap.from(nodes, { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.1, ease: "back.out(2)",
+    gsap.from(nodes, { scale: 0, transformOrigin: "50% 50%", duration: 0.5, stagger: 0.1, ease: "back.out(2)", immediateRender: false,
       scrollTrigger: { trigger: g, start: "top 86%" } });
     gsap.to(nodes, { opacity: 0.35, duration: 0.55, stagger: { each: 0.4, repeat: -1, yoyo: true }, delay: 1.2 });
   });
