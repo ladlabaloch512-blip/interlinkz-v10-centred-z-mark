@@ -423,3 +423,29 @@ main{padding-bottom:64px}
  .faq-sign{right:66px}
  .faq-q{padding-right:96px}
 }
+
+/* Footer rebuild 2026-11-23: one clean structure. Brand block (logo, tagline,
+   website and email), Services column, Company column in two link tracks,
+   and a single bottom row with the legal links. No link appears twice. */
+.foot-brand{flex:0 0 300px;max-width:300px}
+.foot-contact{margin:12px 0 0;font-size:16px;line-height:1.55}
+.foot-contact a{color:#fff;text-decoration:none}
+.foot-contact a:hover{text-decoration:underline}
+.foot-contact a.foot-web{color:var(--yellow);font-weight:700}
+.footer-in{align-items:flex-start}
+.foot-cols{display:flex;gap:54px;margin-left:auto}
+.foot-col h4{font-size:13.5px;font-weight:800;letter-spacing:1.6px;margin:0 0 10px;color:#fff;display:inline-block;border-bottom:3px solid var(--yellow);padding-bottom:4px}
+.foot-col a{display:block;font-size:15.5px;padding:2px 0;white-space:nowrap;color:#e8e8ea;text-decoration:none}
+.foot-col a:hover{text-decoration:underline;color:#fff}
+.foot-col-grid{display:grid;grid-template-rows:repeat(4,auto);grid-auto-flow:column;column-gap:46px}
+.foot-col-grid a{display:block;font-size:15.5px;padding:2px 0;white-space:nowrap}
+.foot-bar{border-top:1px solid #3a3a40;padding-top:16px;margin-top:22px}
+.foot-legal{margin-left:0}
+@media(max-width:860px){
+ .footer-in{flex-direction:column;text-align:left}
+ .foot-cols{margin-left:0;flex-wrap:wrap;gap:36px}
+}
+@media(max-width:760px){
+ .foot-col-grid{column-gap:30px}
+ .foot-bar{padding-left:44px}
+}
